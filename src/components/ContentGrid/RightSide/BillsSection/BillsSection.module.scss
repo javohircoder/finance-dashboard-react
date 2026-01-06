@@ -1,0 +1,35 @@
+@use '../../../../styles/utils/mixins' as *;
+@use '../../../../styles/utils/variables' as *;
+
+.section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.header {
+  @include flex-between;
+  margin-bottom: $spacing-lg;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+  gap: $spacing-sm;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+

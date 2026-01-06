@@ -1,0 +1,13 @@
+@use '../../../../../styles/utils/mixins' as *;
+@use '../../../../../styles/utils/variables' as *;
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md $spacing-xl;
+  flex: 1;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}

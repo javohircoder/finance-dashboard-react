@@ -1,0 +1,52 @@
+@use '../../../../../styles/utils/variables' as *;
+
+.item {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding: $spacing-xs;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+    position: absolute;
+    left: -$font-size-base;
+    top: 0;
+    border-left: 4px;
+    border-left-style: solid;
+
+    border-radius: 8px;
+    box-sizing: border-box;
+
+  }
+  &[data-state='saving']::before {
+    border-left-color: $color-success;
+  }
+
+  &[data-state='gift']::before {
+    border-left-color: $color-secondary;
+  }
+
+  &[data-state='ticket']::before {
+    border-left-color: $color-text-secondary;
+  }
+
+  &[data-state='laptop']:before {
+    border-left-color: $color-warning-secondary;
+  }
+
+}
+
+
+.name {
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.amount {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+}

@@ -1,9 +1,5 @@
-import BillsSection from '../../components/BillsSection/BillsSection';
-import BudgetsSection from '../../components/BudgetsSection/BudgetsSection';
 import ContentGrid from '../../components/ContentGrid/ContentGrid';
 import OverviewCards from '../../components/OverviewCards/OverviewCards';
-import PostSection from '../../components/PostSection/PostSection';
-import TransactionsSection from '../../components/TransactionsSection/TransactionsSection';
 
 const overviewCards = [
     {
@@ -32,20 +28,7 @@ function Dashboard() {
 
             <OverviewCards cards={overviewCards}/>
 
-            <ContentGrid
-                left={
-                    <>
-                        <PostSection/>
-                        <TransactionsSection/>
-                    </>
-                }
-                right={
-                    <>
-                        <BudgetsSection/>
-                        <BillsSection/>
-                    </>
-                }
-            />
+            <ContentGrid/>
         </>
     );
 }
