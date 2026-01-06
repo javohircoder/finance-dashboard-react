@@ -8,7 +8,7 @@ const pots = [
     {id: 4, name: 'New Laptop', amount: '$10', state: 'laptop'},
 ];
 
-function PotsList({items}) {
+function PotsList() {
     return (
         <div className={styles.list}>
             {pots.map(item => (

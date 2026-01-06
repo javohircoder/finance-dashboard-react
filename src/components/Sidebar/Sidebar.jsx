@@ -39,7 +39,7 @@ const sidebarMenu = [
 
 
 function Sidebar() {
-    const [activeItem, setActiveItem] = useState('overview');
+    const [activeItem, _setActiveItem] = useState('overview');
     return (
         <aside className={styles.sidebar}>
             <div className={styles.logo}>

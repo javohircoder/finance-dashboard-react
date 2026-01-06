@@ -1,4 +1,4 @@
-function SvgArrowRight(props) {
+function SvgArrowRight() {
     return (
         <svg
             fill="none"

@@ -1,4 +1,4 @@
-function SvgDonutChart(props) {
+function SvgDonutChart() {
     return (
         <svg
             className="donut-chart__svg"
