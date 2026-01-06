@@ -2,7 +2,7 @@
 // Mixins - Overused styles
 // ============================================
 
-@use './variables' as *;
+@use '../../styles/utils/_variables' as *;
 
 // Adaptive
 @mixin mobile {

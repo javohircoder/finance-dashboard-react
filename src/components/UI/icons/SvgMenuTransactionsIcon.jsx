@@ -1,4 +1,4 @@
-function SvgTransactionsIcon() {
+function SvgMenuTransactionsIcon() {
     return (
         <svg
             fill="none"
@@ -15,4 +15,4 @@ function SvgTransactionsIcon() {
     );
 }
 
-export default SvgTransactionsIcon;
+export default SvgMenuTransactionsIcon;

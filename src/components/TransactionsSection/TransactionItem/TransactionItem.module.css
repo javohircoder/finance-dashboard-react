@@ -1,32 +1,54 @@
 .item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(32, 31, 36, 0.1);
+  transition: background-color all 0.15s ease;
+}
+.item:first-child {
+  padding-top: 0.22rem;
+}
+.item:last-child {
+  padding-bottom: 0;
+}
+.item:last-child {
+  border-bottom: none;
 }
 
 .info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 1rem;
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  object-fit: cover;
+  background-color: #f8f4f0;
 }
 
 .name {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #201f24;
+  line-height: 150%;
 }
 
 .details {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
 }
 
 .amount {
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 150%;
 }
 
 .positive {
@@ -34,12 +56,12 @@
 }
 
 .negative {
-  color: #c94736;
+  color: #201f24;
 }
 
 .date {
-  font-size: 12px;
-  opacity: 0.6;
+  font-size: 0.75rem;
+  color: #696868;
 }
 
 /*# sourceMappingURL=TransactionItem.module.css.map */

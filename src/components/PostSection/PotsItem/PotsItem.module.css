@@ -1,14 +1,44 @@
 .item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  padding: 0.25rem;
+  position: relative;
+}
+.item::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  border-left: 4px;
+  border-left-style: solid;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+.item[data-state=saving]::before {
+  border-left-color: #277c78;
+}
+.item[data-state=gift]::before {
+  border-left-color: #82c9d7;
+}
+.item[data-state=ticket]::before {
+  border-left-color: #696868;
+}
+.item[data-state=laptop]:before {
+  border-left-color: #f2cdac;
 }
 
 .name {
-  font-size: 14px;
+  font-size: 0.75rem;
+  color: #696868;
 }
 
 .amount {
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #201f24;
 }
 
 /*# sourceMappingURL=PotsItem.module.css.map */

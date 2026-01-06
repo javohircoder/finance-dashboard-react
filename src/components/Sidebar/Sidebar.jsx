@@ -2,10 +2,10 @@ import styles from './Sidebar.module.scss'
 import NavItem from "./NavItem/NavItem.jsx";
 import SvgLeftMinimize from "../UI/icons/SvgLeftMinimize.jsx";
 import SvgOverviewIcon from "../UI/icons/SvgOverviewIcon.jsx";
-import SvgTransactionsIcon from "../UI/icons/SvgTransactionsIcon.jsx";
-import SvgBudgetsIcon from "../UI/icons/SvgBudgetsIcon.jsx";
-import SvgPotsIcon from "../UI/icons/SvgPotsIcon.jsx";
-import SvgBillsIcon from "../UI/icons/SvgBillsIcon.jsx";
+import SvgMenuTransactionsIcon from "../UI/icons/SvgMenuTransactionsIcon.jsx";
+import SvgMenuBudgetsIcon from "../UI/icons/SvgMenuBudgetsIcon.jsx";
+import SvgMenuPotsIconBold from "../UI/icons/SvgMenuPotsIconBold.jsx";
+import SvgMenuBillsIcon from "../UI/icons/SvgMenuBillsIcon.jsx";
 import {useState} from "react";
 
 
@@ -18,22 +18,22 @@ const sidebarMenu = [
     {
         id: 'transactions',
         label: 'Transaction',
-        icon: SvgTransactionsIcon,
+        icon: SvgMenuTransactionsIcon,
     },
     {
         id: 'budgets',
         label: 'Budgets',
-        icon: SvgBudgetsIcon,
+        icon: SvgMenuBudgetsIcon,
     },
     {
         id: 'pots',
         label: 'Pots',
-        icon: SvgPotsIcon,
+        icon: SvgMenuPotsIconBold,
     },
     {
         id: 'bills',
         label: 'Recurring Bills',
-        icon: SvgBillsIcon,
+        icon: SvgMenuBillsIcon,
     },
 ]
 

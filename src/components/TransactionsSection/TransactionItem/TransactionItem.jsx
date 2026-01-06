@@ -1,6 +1,6 @@
 import styles from './TransactionItem.module.scss';
 
-function TransactionItem({name, amount, data, avatar, type}) {
+function TransactionItem({name, amount, date, avatar, type}) {
     return (
         <div className={styles.item}>
             <div className={styles.info}>
@@ -14,7 +14,7 @@ function TransactionItem({name, amount, data, avatar, type}) {
 
             <div className={styles.details}>
                 <span className={`${styles.amount} ${styles[type]}`}>{amount}</span>
-                <span className={styles.date}>{data}</span>
+                <span className={styles.date}>{date}</span>
             </div>
         </div>
     );

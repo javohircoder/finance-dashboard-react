@@ -1,9 +1,9 @@
-@use '../../../styles/utils/_mixins' as *;
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
 
 .pots {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  gap: $spacing-3xl;
 
   @include mobile {
     flex-direction: column;

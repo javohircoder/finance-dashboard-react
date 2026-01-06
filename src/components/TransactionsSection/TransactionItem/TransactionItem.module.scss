@@ -1,43 +1,67 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
 .item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-between;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba($color-bg-dark, 0.1);
+  transition: background-color $transition-fast;
+
+  &:first-child {
+    padding-top: 0.220rem;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  @include flex-start;
+  gap: $spacing-md;
 }
 
 .avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-full;
+  object-fit: cover;
+  background-color: $color-bg-light;
 }
 
 .name {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  line-height: 150%;
 }
 
 .details {
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: $spacing-xs;
 }
 
 .amount {
-  font-weight: 600;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  line-height: 150%;
 }
 
 .positive {
-  color: #277c78;
+  color: $color-success;
 }
 
 .negative {
-  color: #c94736;
+  color: $color-text-primary;
 }
 
 .date {
-  font-size: 12px;
-  opacity: 0.6;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
 }

@@ -1,0 +1,30 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.green { background: #277c78; }
+.blue { background: #82c9d7; }
+.orange { background: #f2cdac; }
+.gray { background: #626070; }
+
+.text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.name {
+  font-size: 14px;
+}
+
+.amount {
+  font-weight: 600;
+}

@@ -1,4 +1,4 @@
-function SvgPotsIcon() {
+function SvgMenuPotsIconBold() {
     return (
         <svg
             fill="none"
@@ -15,4 +15,4 @@ function SvgPotsIcon() {
     );
 }
 
-export default SvgPotsIcon;
+export default SvgMenuPotsIconBold;

@@ -1,0 +1,7 @@
+@use '../../../styles/utils/_variables' as *;
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}

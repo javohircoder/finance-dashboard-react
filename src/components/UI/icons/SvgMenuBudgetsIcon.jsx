@@ -1,4 +1,4 @@
-function SvgBudgetsIcon() {
+function SvgMenuBudgetsIcon() {
     return (
         <svg
             fill="none"
@@ -15,4 +15,4 @@ function SvgBudgetsIcon() {
     )
 }
 
-export default SvgBudgetsIcon;
+export default SvgMenuBudgetsIcon;

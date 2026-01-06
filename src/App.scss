@@ -1,0 +1,101 @@
+@use 'styles/utils/variables' as *;
+@use 'styles/utils/mixins' as *;
+
+.container {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: $color-bg-light;
+}
+
+.main-content {
+  padding: $spacing-xl $spacing-3xl;
+  overflow-x: hidden;
+  width: 100%;
+
+  @include mobile {
+    padding: $spacing-lg;
+
+    &--transactions,
+    &--budgets {
+      background-color: $color-bg-light;
+    }
+  }
+
+  .main-header {
+    margin-bottom: $spacing-xl;
+
+    &__title {
+      font-size: 2.5rem;
+      font-weight: $font-weight-bold;
+      color: $color-text-primary;
+      width: 100%;
+
+      @include mobile {
+        font-size: $font-size-2xl;
+      }
+    }
+  }
+
+  .content-grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    width: 55%;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-lg;
+    width: 43%;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+}

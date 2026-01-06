@@ -4,18 +4,6 @@
   transition: all 0.3s ease;
   background-color: #ffffff;
 }
-.card__label {
-  font-size: 0.875rem;
-  color: #696868;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.card__amount {
-  font-size: 2rem;
-  line-height: 120%;
-  font-weight: 700;
-}
 .card--dark {
   background-color: #201f24;
   color: #ffffff;
@@ -23,8 +11,23 @@
 .card--dark .card__label {
   color: #ffffff;
 }
-.card--light {
+
+.light {
   background-color: #ffffff;
+}
+
+.label {
+  font-size: 0.875rem;
+  color: #696868;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.amount {
+  font-size: 2rem;
+  line-height: 120%;
+  font-weight: 700;
 }
 
 /*# sourceMappingURL=Card.module.css.map */

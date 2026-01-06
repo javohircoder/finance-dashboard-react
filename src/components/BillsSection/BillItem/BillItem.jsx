@@ -1,8 +1,10 @@
-function BillItem() {
+import styles from './BillItem.module.scss';
+
+function BillItem({label, amount, type}) {
     return (
-        <div className="bill-item" data-state="paid">
-            <span className="bill-item__label">Paid Bills</span>
-            <span className="bill-item__amount">$190.00</span>
+        <div className={`${styles.item} ${type}`}>
+            <span className={styles.label}>{label}</span>
+            <span className={styles.amount}>{amount}</span>
         </div>
     );
 }

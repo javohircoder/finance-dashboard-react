@@ -1,4 +1,4 @@
-function SvgBillsIcon() {
+function SvgMenuBillsIcon() {
     return (
         <svg
             fill="none"
@@ -15,4 +15,4 @@ function SvgBillsIcon() {
     );
 }
 
-export default SvgBillsIcon;
+export default SvgMenuBillsIcon;

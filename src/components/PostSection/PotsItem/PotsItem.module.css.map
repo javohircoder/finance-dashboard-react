@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["PotsItem.module.scss"],"names":[],"mappings":"AAAA;EACE;EACA;;;AAGF;EACE;;;AAGF;EACE","file":"PotsItem.module.css"}
+{"version":3,"sourceRoot":"","sources":["PotsItem.module.scss","../../../styles/utils/_variables.scss"],"names":[],"mappings":"AAEA;EACE;EACA;EACA,SCiCW;EDhCX;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EAEA;EACA;;AAGF;EACE,mBCHY;;ADMd;EACE,mBCvBc;;AD0BhB;EACE,mBCfmB;;ADkBrB;EACE,mBC3BsB;;;ADiC1B;EACE,WCda;EDeb,OC3BqB;;;AD8BvB;EACE,WClBa;EDmBb,aCtBiB;EDuBjB,OClCmB","file":"PotsItem.module.css"}

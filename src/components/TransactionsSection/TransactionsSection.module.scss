@@ -1,3 +1,6 @@
+@use '../../styles/utils/mixins' as *;
+@use '../../styles/utils/variables' as *;
+
 .section {
   background-color: #ffffff;
   border-radius: 12px;
@@ -5,23 +8,26 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+  @include flex-between;
+  margin-bottom: $spacing-lg;
 }
 
 .title {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
 }
 
 .link {
-  font-size: 14px;
-  color: #277c78;
-  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+  gap: $spacing-sm;
+
+  &:hover {
+    color: $color-text-primary;
+  }
 }
 
-.content {
-  display: block;
-}
