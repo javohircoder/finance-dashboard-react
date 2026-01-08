@@ -3,6 +3,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem 2rem;
   flex: 1;
+  width: 50%;
 }
 @media (max-width: 767px) {
   .list {

@@ -7,7 +7,7 @@ function OverviewCards({cards}) {
         <section className={styles.wrapper}>
             {cards.map((card) => (
                 <Card
-                    key={card.id}
+                    key={card.label}
                     label={card.label}
                     amount={card.amount}
                     variant={card.variant}/>

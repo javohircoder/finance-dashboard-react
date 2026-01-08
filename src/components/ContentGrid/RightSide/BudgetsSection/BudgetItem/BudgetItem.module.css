@@ -1,0 +1,53 @@
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 4px;
+  height: 40px;
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+.dot[data-color=blue] {
+  background-color: #82c9d7;
+}
+.dot[data-color=orange] {
+  background-color: #f2cd5c;
+}
+.dot[data-color=gray] {
+  background-color: #696868;
+}
+.dot[data-color=green] {
+  background-color: #4da89d;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.name {
+  font-size: 14px;
+}
+
+.amount {
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=BudgetItem.module.css.map */

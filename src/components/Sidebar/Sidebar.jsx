@@ -49,22 +49,28 @@ function Sidebar() {
             </div>
 
             {/* navigation */}
-            <nav className="sidebar__nav">
-                {sidebarMenu.map((item) => (
-                    <NavItem
-                        key={item.id}
-                        label={item.label}
-                        isActive={activeItem === item.id}
-                        icon={item.icon}
-                    />
-                ))}
+            <nav className={styles.nav}>
+                {sidebarMenu.map((item) => {
+                    const Icon = item.icon;
 
+                    return (
+                        <NavItem
+                            key={item.id}
+                            label={item.label}
+                            isActive={activeItem === item.id}
+                            icon={<Icon/>}
+                            onClick={() => _setActiveItem(item.id)}
+                        />
+                    );
+                })}
             </nav>
 
             {/* minimize button */}
-            <button className="sidebar__minimize">
-                <SvgLeftMinimize/>
-                <span className="minimize__text">Minimize Menu</span>
+            <button className={styles.minimize}>
+                <span className={styles.minimizeIcon}>
+                 <SvgLeftMinimize/>
+                </span>
+                <span className={styles.minimizeText}>Minimize Menu</span>
             </button>
         </aside>
     );

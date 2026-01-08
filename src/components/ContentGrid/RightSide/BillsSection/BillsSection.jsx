@@ -7,16 +7,15 @@ function BillsSection() {
         <section className={styles.section}>
             <div className={styles.header}>
                 <h3 className={styles.title}>Recurring Bills</h3>
-                <a className={styles.link} href="#">
+                <a href="#" className={styles.link}>
                     See Details
                     <span className={styles.icon}>
                         <SvgArrowRight/>
                     </span>
                 </a>
             </div>
-            <div className={styles.content}>
-                <BillsList/>
-            </div>
+
+            <BillsList/>
         </section>
     );
 }

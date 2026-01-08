@@ -1,6 +1,5 @@
 //========================================
 // SECTION Sidebar
-//========================================
 
 @use '../../styles/utils/_variables' as *;
 @use '../../styles/utils/_mixins' as *;
@@ -42,6 +41,13 @@
   padding-right: $spacing-lg;
 }
 
+.icon svg {
+  width: $width-icon-sm;
+  height: $width-icon-sm;
+  display: flex;
+  align-items: center;
+}
+
 .minimize {
   @include button-reset;
   @include flex-start;
@@ -54,6 +60,7 @@
   &:hover {
     background-color: rgba(255, 255, 255, 0.05);
     color: $color-text-light;
+    cursor: pointer;
   }
 }
 
@@ -64,5 +71,7 @@
 }
 
 .minimizeText {
-  font-size: $font-size-sm;
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  font-family: $font-primary;
 }

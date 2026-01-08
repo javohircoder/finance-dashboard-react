@@ -1,0 +1,23 @@
+.grid {
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 55%;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 43%;
+}
+
+/*# sourceMappingURL=ContentGrid.module.css.map */

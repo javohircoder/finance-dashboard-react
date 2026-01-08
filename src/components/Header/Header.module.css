@@ -1,0 +1,18 @@
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 120%;
+  font-weight: 700;
+  color: #201f24;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .title {
+    font-size: 2rem;
+  }
+}
+
+/*# sourceMappingURL=Header.module.css.map */

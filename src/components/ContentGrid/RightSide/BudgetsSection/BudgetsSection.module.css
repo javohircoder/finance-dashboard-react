@@ -1,0 +1,42 @@
+.section {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #201f24;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #696868;
+  transition: color all 0.15s ease;
+  gap: 0.5rem;
+}
+.link:hover {
+  color: #201f24;
+}
+
+.budgets {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+/*# sourceMappingURL=BudgetsSection.module.css.map */

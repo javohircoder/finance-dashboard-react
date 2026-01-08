@@ -1,0 +1,61 @@
+@use '../../../styles/utils/variables' as *;
+@use '../../../styles/utils/mixins' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-xl;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.item {
+  @include flex-start;
+  padding: $spacing-md $spacing-xl;
+  border-radius: 0 $font-size-xs $font-size-xs 0;
+  border-left: 4px solid transparent;
+  gap: $spacing-md;
+  color: $color-text-muted;
+  transition: $transition-fast;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: $color-text-light;
+    cursor: pointer;
+  }
+}
+
+.active {
+  background-color: $color-bg-light;
+  color: $color-text-primary;
+  border-left: 4px solid $color-success;
+
+  &:hover {
+    background-color: $color-bg-light;
+    color: $color-text-primary;
+    border-left: 4px solid $color-success;
+  }
+
+  svg {
+    color: $color-success;
+  }
+}
+
+.icon svg {
+  width: $width-icon-sm;
+  height: $width-icon-sm;
+  display: flex;
+  align-items: center;
+
+}
+
+.text {
+  font-size: $font-size-base;
+  font-weight: $font-weight-bold;
+  font-family: $font-primary;
+}

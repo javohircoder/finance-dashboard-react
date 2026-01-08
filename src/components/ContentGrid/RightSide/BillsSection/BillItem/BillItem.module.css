@@ -1,0 +1,41 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  border-radius: 0.75rem;
+  border-left: 4px;
+  background: #f8f4f0;
+  border-left-style: solid;
+}
+.item[data-state=paid] {
+  border-left-color: #277c78;
+}
+.item[data-state=total] {
+  border-left-color: #f2cd5c;
+}
+.item[data-state=due] {
+  border-left-color: #82c9d7;
+}
+
+.label {
+  font-size: 0.875rem;
+}
+
+.amount {
+  font-weight: 700;
+}
+
+.paid {
+  border-left: 4px solid #277c78;
+}
+
+.total {
+  border-left: 4px solid #f2cd5c;
+}
+
+.due {
+  border-left: 4px solid #c94c4c;
+}
+
+/*# sourceMappingURL=BillItem.module.css.map */

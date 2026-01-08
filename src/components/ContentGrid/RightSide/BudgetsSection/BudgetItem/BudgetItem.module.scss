@@ -1,0 +1,58 @@
+@use '../../../../../styles/utils/variables' as *;
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: $spacing-xl;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 4px;
+  height: 40px;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+
+  &[data-color='blue'] {
+    background-color: $color-secondary;
+  }
+
+  &[data-color='orange'] {
+    background-color: $color-warning;
+  }
+
+  &[data-color='gray'] {
+    background-color: $color-text-secondary;
+  }
+
+  &[data-color='green'] {
+    background-color: $color-accent;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.name {
+  font-size: 14px;
+}
+
+.amount {
+  font-weight: 600;
+}

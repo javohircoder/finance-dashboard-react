@@ -1,0 +1,1 @@
+{"version":3,"sourceRoot":"","sources":["BillItem.module.scss","../../../../../styles/utils/_variables.scss"],"names":[],"mappings":"AAIA;EACE;EACA;EACA;EACA;EACA,eC2CU;ED1CV;EACA,YCCe;EDAf;;AAEA;EACE,mBCMY;;ADHd;EACE,mBCXY;;ADcd;EACE,mBClBc;;;ADuBlB;EACE,WCCa;;;ADEf;EACE,aCNiB;;;ADSnB;EACE;;;AAGF;EACE;;;AAGF;EACE","file":"BillItem.module.css"}

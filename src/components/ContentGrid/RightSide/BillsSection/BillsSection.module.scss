@@ -2,11 +2,11 @@
 @use '../../../../styles/utils/variables' as *;
 
 .section {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
+  background-color: $color-text-light;
+  border-radius: $radius-md;
+  padding: $spacing-lg;
   width: 100%;
-  max-width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .header {
@@ -31,5 +31,8 @@
   &:hover {
     color: $color-text-primary;
   }
+}
+.icon {
+  display: flex;
 }
 

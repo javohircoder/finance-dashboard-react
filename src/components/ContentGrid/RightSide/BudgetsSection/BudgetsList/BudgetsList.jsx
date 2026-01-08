@@ -1,4 +1,4 @@
-import BudgetItem from './BudgetItem/BudgetItem.jsx';
+import BudgetItem from '../BudgetItem/BudgetItem.jsx';
 import styles from './BudgetsList.module.scss';
 
 const budgets = [

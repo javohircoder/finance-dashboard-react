@@ -11,6 +11,19 @@
   border-left: 4px;
   background: $color-bg-light;
   border-left-style: solid;
+
+  &[data-state='paid'] {
+    border-left-color: $color-success;
+  }
+
+  &[data-state='total'] {
+    border-left-color: $color-warning;
+  }
+
+  &[data-state='due'] {
+    border-left-color: $color-secondary;
+  }
+
 }
 
 .label {

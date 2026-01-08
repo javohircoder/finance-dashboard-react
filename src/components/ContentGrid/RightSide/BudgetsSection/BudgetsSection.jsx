@@ -17,11 +17,9 @@ function BudgetsSection() {
                 </a>
             </div>
 
-            <div className={styles.content}>
-                <div className={styles.budgets}>
-                    <DonutChart/>
-                    <BudgetsList/>
-                </div>
+            <div className={styles.budgets}>
+                <DonutChart/>
+                <BudgetsList/>
             </div>
         </section>
     );

@@ -1,0 +1,18 @@
+@use '../../styles/utils/variables' as *;
+@use '../../styles/utils/mixins' as *;
+
+.header {
+  margin-bottom: $spacing-xl;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  line-height: 120%;
+  font-weight: $font-weight-bold;
+  color: $color-text-primary;
+  width: 100%;
+
+  @include mobile {
+    font-size: $font-size-2xl;
+  }
+}
