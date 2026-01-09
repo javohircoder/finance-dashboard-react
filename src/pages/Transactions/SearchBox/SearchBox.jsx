@@ -11,3 +11,5 @@ function SearchBox() {
         </div>
     )
 }
+
+export default SearchBox;
