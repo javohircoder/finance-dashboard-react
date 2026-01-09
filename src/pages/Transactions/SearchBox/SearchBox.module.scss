@@ -1,0 +1,42 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.searchBox {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+
+  @include mobile {
+    max-width: 100%;
+  }
+
+  .icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: #98908b;
+    pointer-events: none;
+  }
+
+  .input {
+    width: 100%;
+    padding: $spacing-md 52px $spacing-md $spacing-md;
+    border: 1px solid #98908b;
+    border-radius: $radius-sm;
+    font-size: $font-size-sm;
+    color: $color-text-primary;
+    background-color: white;
+
+    &::placeholder {
+      color: #98908b;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-text-primary;
+    }
+  }
+}

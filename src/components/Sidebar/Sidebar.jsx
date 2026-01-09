@@ -7,6 +7,7 @@ import SvgMenuBudgetsIcon from "../UI/icons/SvgMenuBudgetsIcon.jsx";
 import SvgMenuPotsIconBold from "../UI/icons/SvgMenuPotsIconBold.jsx";
 import SvgMenuBillsIcon from "../UI/icons/SvgMenuBillsIcon.jsx";
 import {useState} from "react";
+import {Link, useLocation} from "react-router-dom";
 
 
 const sidebarMenu = [
@@ -14,38 +15,47 @@ const sidebarMenu = [
         id: 'overview',
         label: 'Overview',
         icon: SvgOverviewIcon,
+        path: '/',
     },
     {
         id: 'transactions',
         label: 'Transaction',
         icon: SvgMenuTransactionsIcon,
+        path: '/transactions',
     },
     {
         id: 'budgets',
         label: 'Budgets',
         icon: SvgMenuBudgetsIcon,
+        path: '/budgets',
     },
     {
         id: 'pots',
         label: 'Pots',
         icon: SvgMenuPotsIconBold,
+        path: '/pots',
     },
     {
         id: 'bills',
         label: 'Recurring Bills',
         icon: SvgMenuBillsIcon,
+        path: '/bills',
     },
 ]
 
 
 function Sidebar() {
-    const [activeItem, _setActiveItem] = useState('overview');
+    const location = useLocation();
+    const [isMinimized, _setIsMinimized] = useState(false);
+    const isActive = (path) => {
+        return location.pathname === path;
+    }
     return (
-        <aside className={styles.sidebar}>
+        <aside className={`{styles.sidebar} ${isMinimized ? 'is-minimized' : ''}`}>
             <div className={styles.logo}>
-                <a href="#">
+                <Link to="/">
                     <img alt="Logo" src="/images/Sidebar/Logo.svg"/>
-                </a>
+                </Link>
             </div>
 
             {/* navigation */}
@@ -54,13 +64,19 @@ function Sidebar() {
                     const Icon = item.icon;
 
                     return (
-                        <NavItem
+                        <Link
                             key={item.id}
-                            label={item.label}
-                            isActive={activeItem === item.id}
-                            icon={<Icon/>}
-                            onClick={() => _setActiveItem(item.id)}
-                        />
+                            to={item.path}
+                            className={styles.navLink}
+                        >
+                            <NavItem
+                                key={item.id}
+                                label={item.label}
+                                isActive={activeItem === item.path}
+                                icon={<Icon/>}
+                                onClick={() => _setActiveItem(item.id)}
+                            />
+                        </Link>
                     );
                 })}
             </nav>

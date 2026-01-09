@@ -1,0 +1,65 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.filters {
+  display: flex;
+  gap: $spacing-md;
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
+
+.filterItem {
+  @include flex-start;
+  gap: $spacing-sm;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: $font-weight-regular;
+}
+
+.selectWrapper {
+  position: relative;
+  min-width: 160px;
+
+  .arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #201f24;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.select {
+  padding: $spacing-md $spacing-lg;
+  border: 1px solid #98908b;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  background-color: white;
+  cursor: pointer;
+  min-width: 160px;
+
+  // Dropdown
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23201F24' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-md center;
+  //padding-right: 40px;
+
+  &:focus {
+    outline: none;
+    border-color: $color-text-primary;
+  }
+
+  @include mobile {
+    min-width: 100%;
+  }
+}
