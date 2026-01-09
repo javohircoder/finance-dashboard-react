@@ -72,7 +72,7 @@ function Sidebar() {
                             <NavItem
                                 key={item.id}
                                 label={item.label}
-                                isActive={activeItem === item.path}
+                                isActive={isActive(item.path)}
                                 icon={<Icon/>}
                                 onClick={() => _setActiveItem(item.id)}
                             />
