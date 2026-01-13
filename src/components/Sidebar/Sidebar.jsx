@@ -51,7 +51,7 @@ function Sidebar() {
         return location.pathname === path;
     }
     return (
-        <aside className={`{styles.sidebar} ${isMinimized ? 'is-minimized' : ''}`}>
+        <aside className={`${styles.sidebar} ${isMinimized ? 'is-minimized' : ''}`}>
             <div className={styles.logo}>
                 <Link to="/">
                     <img alt="Logo" src="/images/Sidebar/Logo.svg"/>
@@ -74,7 +74,7 @@ function Sidebar() {
                                 label={item.label}
                                 isActive={isActive(item.path)}
                                 icon={<Icon/>}
-                                onClick={() => _setActiveItem(item.id)}
+                                // onClick={() => _setActiveItem(item.id)}
                             />
                         </Link>
                     );
@@ -82,7 +82,7 @@ function Sidebar() {
             </nav>
 
             {/* minimize button */}
-            <button className={styles.minimize}>
+            <button className={styles.minimize} onClick={() => _setIsMinimized(!isMinimized)}>
                 <span className={styles.minimizeIcon}>
                  <SvgLeftMinimize/>
                 </span>

@@ -7,16 +7,10 @@ import './App.css';
 function App() {
     return (
         <Routes>
-            <Route path="/" element={
-                <MainLayout>
-                    <Dashboard/>
-                </MainLayout>
-            }/>
-            <Route path="/transactions" element={
-                <MainLayout>
-                    <Transactions/>
-                </MainLayout>
-            }/>
+            <Route element={<MainLayout/>}>
+                <Route path="/" element={<Dashboard/>}/>
+                <Route path="/transactions" element={<Transactions/>}/>
+            </Route>
         </Routes>
 
     );
