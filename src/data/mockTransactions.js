@@ -1,4 +1,4 @@
-const mockTransactions = [
+export const mockTransactions = [
     {
         id: 1,
         name: 'Emma Richardson',

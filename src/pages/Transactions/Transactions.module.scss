@@ -1,0 +1,14 @@
+@use '../../styles/utils/_variables' as *;
+@use '../../styles/utils/_mixins' as *;
+
+.transactions {
+  background-color: $color-bg-light;
+
+  padding: $spacing-xl $spacing-3xl;
+  overflow-x: hidden;
+  width: 100%;
+
+  @include mobile {
+    padding: $spacing-lg;
+  }
+}

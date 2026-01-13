@@ -1,8 +1,18 @@
-function TransactionsTable() {
+import TransactionRow from "../TransactionRow/TransactionRow.jsx";
+
+function TransactionsTable({data}) {
+    console.log("TABLE DATA:", data);
+    if (data.length === 0) {
+        return <p>No transactions found</p>;
+    }
     return (
-        <section className="transactionsTable">
-            <h2>Table</h2>
-        </section>
+        <table>
+            <tbody>
+            {data.map((item) => (
+                <TransactionRow key={item.id} transaction={item}/>
+            ))}
+            </tbody>
+        </table>
     )
 }
 
