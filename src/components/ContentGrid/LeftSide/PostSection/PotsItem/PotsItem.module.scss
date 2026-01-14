@@ -7,7 +7,7 @@
   position: relative;
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     width: 0;
     height: 100%;
@@ -19,7 +19,6 @@
 
     border-radius: 8px;
     box-sizing: border-box;
-
   }
   &[data-state='saving']::before {
     border-left-color: $color-success;
@@ -36,9 +35,7 @@
   &[data-state='laptop']:before {
     border-left-color: $color-warning-secondary;
   }
-
 }
-
 
 .name {
   font-size: $font-size-xs;

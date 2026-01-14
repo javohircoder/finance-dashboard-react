@@ -1,20 +1,20 @@
 import styles from './SearchBox.module.scss';
-import SvgSearchIcon from "../../../components/UI/icons/SvgSearchIcon.jsx";
+import SvgSearchIcon from '../../../components/UI/icons/SvgSearchIcon.jsx';
 
-function SearchBox({value, onChange}) {
-    return (
-        <div className={styles.searchBox}>
-             <span className={styles.icon}>
-                 <SvgSearchIcon/>
-            </span>
-            <input type="text"
-
-                   value={value}
-                   
-                   placeholder="Search transaction"
-                   onChange={(e) => onChange(e.target.value)}/>
-        </div>
-    )
+function SearchBox({ value, onChange }) {
+  return (
+    <div className={styles.searchBox}>
+      <span className={styles.icon}>
+        <SvgSearchIcon />
+      </span>
+      <input
+        type="text"
+        value={value}
+        placeholder="Search transaction"
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
+  );
 }
 
 export default SearchBox;

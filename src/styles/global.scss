@@ -1,9 +1,13 @@
 @use 'utils/mixins' as *;
-@use 'utils/variables' as *;;
-@use 'base/reset' as *;;
+@use 'utils/variables' as *;
+@use 'base/reset' as *;
 
 body {
-  font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    'Public Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
   color: $color-text-primary;
   background-color: $color-bg-light;
 }

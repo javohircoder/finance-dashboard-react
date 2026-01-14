@@ -1,7 +1,6 @@
 @use '../../../../../styles/utils/variables' as *;
 @use '../../../../../styles/utils/mixins' as *;
 
-
 .item {
   display: flex;
   justify-content: space-between;
@@ -23,7 +22,6 @@
   &[data-state='due'] {
     border-left-color: $color-secondary;
   }
-
 }
 
 .label {
