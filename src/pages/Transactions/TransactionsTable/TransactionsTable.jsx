@@ -8,7 +8,10 @@ function TransactionsTable({ data }) {
   return (
     <div className={styles.transactionTable}>
       <div className={styles.tableHeader}>
-        <div className={styles.tableCell}></div>
+        <div className={styles.tableCell}>Recipient / Sender</div>
+        <div className={styles.tableCell}>Category</div>
+        <div className={styles.tableCell}>Transaction Date</div>
+        <div className={`${styles.tableCell} ${styles.amount}`}>Amount</div>
       </div>
       <div className={styles.tableBody}>
         {data.map((item) => (

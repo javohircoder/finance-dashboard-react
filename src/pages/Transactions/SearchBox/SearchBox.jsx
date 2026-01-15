@@ -4,15 +4,16 @@ import SvgSearchIcon from '../../../components/UI/icons/SvgSearchIcon.jsx';
 function SearchBox({ value, onChange }) {
   return (
     <div className={styles.searchBox}>
-      <span className={styles.icon}>
-        <SvgSearchIcon />
-      </span>
       <input
+        className={styles.input}
         type="text"
         value={value}
         placeholder="Search transaction"
         onChange={(e) => onChange(e.target.value)}
       />
+      <button className={styles.button}>
+        <SvgSearchIcon />
+      </button>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import styles from './FilterControls.module.css';
 import SvgCaretDown from '../../../components/UI/icons/SvgCaretDownIcon.jsx';
 
-function FilterControls({ sortBy, category, onSortChange, onCategoryChange }) {
+function FilterControls({ sort, category, onSortChange, onCategoryChange }) {
   return (
     <div className={styles.filters}>
       <div className={styles.filterItem}>
@@ -9,7 +9,7 @@ function FilterControls({ sortBy, category, onSortChange, onCategoryChange }) {
         <div className={styles.selectWrapper}>
           <select
             className={styles.select}
-            value={sortBy}
+            value={sort}
             onChange={(e) => onSortChange(e.target.value)}
           >
             <option value="latest">Latest</option>
@@ -32,11 +32,11 @@ function FilterControls({ sortBy, category, onSortChange, onCategoryChange }) {
             value={category}
             onChange={(e) => onCategoryChange(e.target.value)}
           >
-            <option value="all">All Transactions</option>
+            <option value="All">All Transactions</option>
             <option value="Entertainment">Entertainment</option>
             <option value="Bills">Bills</option>
             <option value="Groceries">Groceries</option>
-            <option value="Transportation">Dining Out</option>
+            <option value="Dining Out">Dining Out</option>
             <option value="Transportation">Transportation</option>
             <option value="Personal Care">Personal Care</option>
             <option value="General">General</option>

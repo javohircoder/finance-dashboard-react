@@ -40,3 +40,15 @@
     }
   }
 }
+
+.button {
+  position: absolute;
+  right: $spacing-md;
+  top: 50%;
+  transform: translateY(-50%);
+  @include button-reset;
+  color: #98908b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

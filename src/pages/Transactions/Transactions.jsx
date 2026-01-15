@@ -1,23 +1,58 @@
+import { useEffect, useMemo, useState } from 'react';
 import FilterControls from './FilterControls/FilterControls.jsx';
 import SearchBox from './SearchBox/SearchBox.jsx';
 import TransactionsTable from './TransactionsTable/TransactionsTable.jsx';
 import Pagination from './Pagination/Pagination.jsx';
 import styles from './Transactions.module.scss';
-import { useEffect, useState } from 'react';
 import { mockTransactions } from '../../data/mockTransactions.js';
 import PageHeader from '../../components/PageHeader/PageHeader';
 
-// const transactionsData = [
-//     {id: 1, title: "Amazon", amount: 120},
-//     {id: 2, title: "Netflix", amount: 15},
-//     {id: 3, title: "Apple", amount: 300},
-// ];
-
 function Transactions() {
-  const [searchValue, setSearchValue] = useState('');
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('All');
+  const [sort, setSort] = useState('Latest');
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log('searchValue:', searchValue);
+
+  const filteredTransactions = useMemo(() => {
+    let result = [...transactions];
+
+    if (search.trim()) {
+      result = result.filter((item) =>
+        item.title?.toLowerCase().includes((search || '').toLowerCase()),
+      );
+    }
+
+    if (category !== 'All') {
+      result = result.filter((item) => item.category === category);
+    }
+    //Sort
+    switch (sort) {
+      case 'Oldest':
+        result = [...result].sort(
+          (a, b) => new Date(b.date).getTime() - new Date(a.date),
+        );
+        break;
+      case 'A to Z':
+        result = [...result].sort((a, b) => a.title.localeCompare(b.title));
+        break;
+      case 'Z to A':
+        result = [...result].sort((a, b) => b.title.localeCompare(a.title));
+        break;
+      case 'Highest':
+        result = [...result].sort((a, b) => b.mount - a.mount);
+        break;
+      case 'Lowest':
+        result = [...result].sort((a, b) => a.amount - b.amount);
+        break;
+      default:
+        result = [...result].sort(
+          (a, b) => new Date(b.date) - new Date(a.date),
+        );
+    }
+    return result;
+  }, [transactions, search, category, sort, loading]);
+
   useEffect(() => {
     setLoading(true);
 
@@ -25,20 +60,38 @@ function Transactions() {
     setTimeout(() => {
       setTransactions(mockTransactions);
       setLoading(false);
-    }, 500);
+    }, 800);
   }, []);
 
-  const filteredTransactions = transactions.filter((item) =>
-    item.title?.toLowerCase().includes((searchValue || '').toLowerCase()),
-  );
   return (
     <>
       <PageHeader title="Transactions" />
       <section className={styles.transactions}>
-        <SearchBox value={searchValue} onChange={setSearchValue} />
-        <FilterControls />
+        <section className={styles.transactionsControls}>
+          <SearchBox value={search} onChange={setSearch} />
+
+          <FilterControls
+            category={category}
+            onCategoryChange={setCategory}
+            sortBy={sort}
+            onSortChange={setSort}
+          />
+        </section>
+
         {loading ? (
-          <p>Loading...</p>
+          <div className={styles.transactionsLoad}>
+            <div className={styles.roller}>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div>Loading...</div>
+          </div>
         ) : (
           <TransactionsTable data={filteredTransactions} />
         )}

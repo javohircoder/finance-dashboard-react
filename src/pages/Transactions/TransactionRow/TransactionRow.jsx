@@ -19,7 +19,7 @@ function TransactionRow({ transaction }) {
         <span className={styles.badge}>{category}</span>
       </div>
       <div className={styles.date}>{date}</div>
-      <div className={`${styles.amount} {styles[type]}`}>
+      <div className={`${styles.amount} ${styles[type]}`}>
         {formatAmount(amount)}
       </div>
     </div>

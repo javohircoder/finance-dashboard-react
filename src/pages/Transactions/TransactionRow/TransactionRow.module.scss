@@ -64,14 +64,22 @@
   color: $color-text-primary;
 }
 
+.date {
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+}
+
 .amount {
+  display: flex;
   font-weight: bold;
+  font-size: $font-size-sm;
+  justify-content: flex-end;
 }
 
 .positive {
-  color: green;
+  color: #277c78;
 }
 
 .negative {
-  color: red;
+  color: $color-text-primary;
 }
