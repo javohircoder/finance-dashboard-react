@@ -1,0 +1,70 @@
+@use '../../../styles/utils/mixins' as *;
+@use '../../../styles/utils/variables' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $spacing-lg;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $spacing-lg;
+    padding: 0;
+  }
+}
+
+.button {
+  @include button-reset;
+  @include flex-center;
+  gap: $spacing-sm;
+  padding: 0.75rem $spacing-md;
+  border: 1px solid $color-text-muted;
+  border-radius: $radius-sm;
+  background-color: white;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  transition: $transition-fast;
+
+  &:hover:not(:disabled) {
+    background-color: $color-text-primary;
+    color: white;
+    border-color: $color-text-primary;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+}
+
+.pages {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.page {
+  @include button-reset;
+  width: 40px;
+  height: 40px;
+  @include flex-center;
+  border: 1px solid $color-text-muted;
+  border-radius: $radius-sm;
+  background-color: white;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  transition: $transition-fast;
+
+  &:hover:not(&.active) {
+    background-color: #fafaf9;
+  }
+
+  &.active {
+    background-color: $color-text-primary;
+    color: white;
+    border-color: $color-text-primary;
+  }
+}

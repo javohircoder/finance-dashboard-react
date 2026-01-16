@@ -1,3 +1,7 @@
+import styles from './Pagination.module.scss';
+import SvgCaretLeft from '../../../components/UI/icons/SvgCaretLeft.jsx';
+import SvgCaretRight from '../../../components/UI/icons/SvgCaretRight.jsx';
+
 function Pagination({ currentPage, totalPages, onPageChange }) {
   const getPageNumbers = () => {
     const pages = [];
@@ -24,11 +28,55 @@ function Pagination({ currentPage, totalPages, onPageChange }) {
         );
       }
     }
+
     return pages;
   };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
   return (
-    <div className="styles.pagination">
-      <h2>Pagination</h2>
+    <div className={styles.pagination}>
+      <button
+        className={`${styles.button} ${styles.prev}`}
+        onClick={handlePrevious}
+        disabled={currentPage === 1}
+      >
+        <SvgCaretLeft />
+        <span>Prev</span>
+      </button>
+
+      <div className={styles.pages}>
+        {getPageNumbers().map((page) => (
+          <button
+            key={page}
+            className={`${styles.page} ${
+              currentPage === page ? styles.active : ''
+            }`}
+            onClick={() => onPageChange(page)}
+          >
+            {page}
+          </button>
+        ))}
+      </div>
+
+      <button
+        className={`${styles.button} ${styles.next}`}
+        onClick={handleNext}
+        disabled={currentPage === totalPages}
+      >
+        <span>Next</span>
+        <SvgCaretRight />
+      </button>
     </div>
   );
 }
