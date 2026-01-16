@@ -132,3 +132,11 @@
     }
   }
 }
+
+.tableWrapper {
+  max-height: 540px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}

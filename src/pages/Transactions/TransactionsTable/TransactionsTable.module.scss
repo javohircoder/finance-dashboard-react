@@ -12,6 +12,10 @@
   padding: 1.25rem $spacing-md;
   border-bottom: 1px solid #f2f2f2;
   margin-bottom: $spacing-lg;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: white;
 
   @include mobile {
     min-width: 600px;
@@ -24,8 +28,9 @@
   font-weight: $font-weight-regular;
   text-align: left;
 }
+
 .amount {
-  text-align: right;
+  text-align: center;
 }
 
 .tableBody {
