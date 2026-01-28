@@ -2,8 +2,8 @@
 @use '../../../styles/utils/variables' as *;
 
 .row {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  display: flex;
+  //grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: $spacing-md;
   padding: $spacing-lg 0;
   border-bottom: 1px solid #f2f2f2;
@@ -26,6 +26,7 @@
 .transactionCell {
   display: flex;
   align-items: center;
+  width: 20%;
 }
 
 .recipient {
@@ -37,7 +38,22 @@
 .avatar {
   width: 40px;
   height: 40px;
-  border-radius: $radius-full;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.avatarSvg {
+  width: 80px;
+  height: 80px;
   overflow: hidden;
   flex-shrink: 0;
   display: flex;

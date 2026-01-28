@@ -4,10 +4,39 @@ import SearchBox from './SearchBox/SearchBox.jsx';
 import TransactionsTable from './TransactionsTable/TransactionsTable.jsx';
 import Pagination from './Pagination/Pagination.jsx';
 import styles from './Transactions.module.scss';
-import { mockTransactions } from '../../data/mockTransactions.js';
 import PageHeader from '../../components/PageHeader/PageHeader';
+import { fetchPokemonsPage } from '../../data/pokemonApi.js';
 
-const PAGE_SIZE = 20;
+const API_LIMIT = 100;
+
+const UI_PAGE_SIZE = 12;
+
+// Dream  SVG
+const dreamWorldUrl = (id) =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+
+// Showdown GIF
+const showdownGifUrl = (id) =>
+  `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`;
+
+function adaptPokemonToTransaction(p) {
+  const id = p.id;
+
+  return {
+    id,
+    name: p.name,
+    title: p.name,
+
+    avatarSvg: dreamWorldUrl(id),
+    avatar: showdownGifUrl(id),
+
+    height: (p.height ?? 0) / 10,
+    weight: (p.weight ?? 0) / 10,
+    speed: p.stats?.find((s) => s.stat?.name === 'speed')?.base_stat ?? 0,
+
+    category: p.types?.[0]?.type?.name || 'unknown',
+  };
+}
 
 function Transactions() {
   const [search, setSearch] = useState('');
@@ -15,77 +44,100 @@ function Transactions() {
   const [sort, setSort] = useState('Latest');
 
   const [transactions, setTransactions] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [errorText, setErrorText] = useState('');
+
+  // client page
   const [page, setPage] = useState(1);
 
-  //Load
+  // LOAD: 20 data
   useEffect(() => {
-    setLoading(true);
+    const controller = new AbortController();
 
-    // imitation Api
-    setTimeout(() => {
-      setTransactions(mockTransactions);
-      setLoading(false);
-    }, 800);
+    async function load() {
+      try {
+        setErrorText('');
+        setLoading(true);
+
+        const { items } = await fetchPokemonsPage({
+          limit: API_LIMIT,
+          offset: 0,
+          signal: controller.signal,
+        });
+
+        setTransactions(items.map(adaptPokemonToTransaction));
+      } catch (e) {
+        if (e?.name !== 'AbortError') {
+          setErrorText(e?.message || 'Failed to load data');
+        }
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    load();
+    return () => controller.abort();
   }, []);
 
-  //Filter
+  // FILTER + SORT (client-side)
   const filteredTransactions = useMemo(() => {
     let result = [...transactions];
 
     if (search.trim()) {
+      const q = search.toLowerCase();
       result = result.filter((item) =>
-        item.title.toLowerCase().includes(search.toLowerCase()),
+        (item.name || item.title || '').toLowerCase().includes(q),
       );
     }
 
     if (category !== 'All') {
       result = result.filter((item) => item.category === category);
     }
-    //Sort
+
     switch (sort) {
-      case 'Oldest':
-        result.sort((a, b) => new Date(a.date).getTime() - new Date(b.date));
-        break;
       case 'A to Z':
-        result.sort((a, b) => a.title.localeCompare(b.title));
+        result.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case 'Z to A':
-        result.sort((a, b) => b.title.localeCompare(a.title));
+        result.sort((a, b) => b.name.localeCompare(a.name));
         break;
       case 'Highest':
-        result.sort((a, b) => b.amount - a.amount);
+        result.sort((a, b) => b.speed - a.speed); // пример сортировки "по силе" — можно поменять
         break;
       case 'Lowest':
-        result.sort((a, b) => a.amount - b.amount);
+        result.sort((a, b) => a.speed - b.speed);
         break;
+      // Latest/Oldest тут можно не делать — у покемонов нет date
       default:
-        result.sort((a, b) => new Date(b.date) - new Date(a.date));
+        break;
     }
+
     return result;
   }, [transactions, search, category, sort]);
 
-  //Pagination
+  // ✅ client pagination
   const totalPages = Math.max(
     1,
-    Math.ceil(filteredTransactions.length / PAGE_SIZE),
+    Math.ceil(filteredTransactions.length / UI_PAGE_SIZE),
   );
 
-  const paginatedTransactions = filteredTransactions.slice(
-    (page - 1) * PAGE_SIZE,
-    page * PAGE_SIZE,
-  );
+  const paginatedTransactions = useMemo(() => {
+    const start = (page - 1) * UI_PAGE_SIZE;
+    return filteredTransactions.slice(start, start + UI_PAGE_SIZE);
+  }, [filteredTransactions, page]);
 
-  //Reset filter
+  // reset page on filters
   useEffect(() => {
     setPage(1);
   }, [search, category, sort]);
 
+  // clamp page
   useEffect(() => {
-    if (page > totalPages) {
-      setPage(totalPages);
-    }
+    if (page > totalPages) setPage(totalPages);
   }, [page, totalPages]);
+
+  const isInitialLoading = loading || transactions.length === 0;
+
   return (
     <>
       <PageHeader title="Transactions" />
@@ -97,12 +149,12 @@ function Transactions() {
           <FilterControls
             category={category}
             onCategoryChange={setCategory}
-            sortBy={sort}
+            sortBy={sort} // ✅ оставил как у тебя
             onSortChange={setSort}
           />
         </section>
 
-        {loading ? (
+        {isInitialLoading ? (
           <div className={styles.transactionsLoad}>
             <div className={styles.roller}>
               <div></div>
@@ -116,17 +168,21 @@ function Transactions() {
             </div>
             <div>Loading...</div>
           </div>
+        ) : errorText ? (
+          <div className={styles.tableWrapper}>{errorText}</div>
         ) : (
           <>
             <div className={styles.tableWrapper}>
               <TransactionsTable data={paginatedTransactions} />
             </div>
 
-            <Pagination
-              currentPage={page}
-              totalPages={totalPages}
-              onPageChange={setPage}
-            />
+            {totalPages > 1 && (
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={setPage}
+              />
+            )}
           </>
         )}
       </section>

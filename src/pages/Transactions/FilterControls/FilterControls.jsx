@@ -36,13 +36,13 @@ function FilterControls({ sort, onSortChange, category, onCategoryChange }) {
             onChange={(e) => onCategoryChange(e.target.value)}
           >
             <option value="All">All Transactions</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Bills">Bills</option>
-            <option value="Groceries">Groceries</option>
-            <option value="Dining Out">Dining Out</option>
-            <option value="Transportation">Transportation</option>
-            <option value="Personal Care">Personal Care</option>
-            <option value="General">General</option>
+            <option value="grass">grass</option>
+            <option value="fire">fire</option>
+            <option value="water">water</option>
+            <option value="electric">electric</option>
+            <option value="bug">bug</option>
+            <option value="normal">normal</option>
+            <option value="poison">poison</option>
           </select>
           <span className={styles.arrow}>
             <SvgCaretDown />
