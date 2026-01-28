@@ -5,7 +5,6 @@ function TransactionRow({ transaction }) {
     avatar,
     name,
     category,
-    date,
     amount,
     type,
     avatarFallback,
@@ -16,18 +15,18 @@ function TransactionRow({ transaction }) {
   } = transaction;
   const isPositive = type === 'positive';
 
-  const formatAmount = () => {
-    const abs = Math.abs(amount).toFixed(2);
-    return `${isPositive ? '+' : '-'} ${abs}`;
-  };
+  // const formatAmount = () => {
+  //   const abs = Math.abs(amount).toFixed(2);
+  //   return `${isPositive ? '+' : '-'} ${abs}`;
+  // };
 
-  const handleImgError = (e) => {
-    // if Gif 404
-    if (avatarFallback) {
-      e.currentTarget.src = avatarFallback;
-      e.currentTarget.onerror = null;
-    }
-  };
+  // const handleImgError = (e) => {
+  //   // if Gif 404
+  //   if (avatarFallback) {
+  //     e.currentTarget.src = avatarFallback;
+  //     e.currentTarget.onerror = null;
+  //   }
+  // };
 
   return (
     <div className={styles.row}>
