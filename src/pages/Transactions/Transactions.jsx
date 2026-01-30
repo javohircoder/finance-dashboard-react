@@ -124,8 +124,6 @@ function Transactions() {
 
   const SHOW_PAGINATION = true;
 
-  const [forceShowPagination, setForceShowPagination] = useState(false);
-
   const shouldPagination = SHOW_PAGINATION || totalPages > 1;
 
   // ✅ client pagination
