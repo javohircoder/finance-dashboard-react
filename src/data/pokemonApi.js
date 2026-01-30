@@ -1,6 +1,6 @@
 const BASE_URL = 'https://pokeapi.co/api/v2';
 
-export async function fetchPokemonsPage({
+export async function fetchPokemonPage({
   limit = 20,
   offset = 0,
   signal,

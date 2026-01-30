@@ -5,7 +5,7 @@ import TransactionsTable from './TransactionsTable/TransactionsTable.jsx';
 import Pagination from './Pagination/Pagination.jsx';
 import styles from './Transactions.module.scss';
 import PageHeader from '../../components/PageHeader/PageHeader';
-import { fetchPokemonsPage } from '../../data/pokemonApi.js';
+import { fetchPokemonPage } from '../../data/pokemonApi.js';
 
 const API_LIMIT = 100;
 
@@ -18,6 +18,13 @@ const dreamWorldUrl = (id) =>
 // Showdown GIF
 const showdownGifUrl = (id) =>
   `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`;
+
+// const UI_FLAGS = {
+//     forcePagination: false,
+// };
+//
+// const shouldShowPagination =
+//     UI_FLAGS.forcePagination || totalPages > 1;
 
 function adaptPokemonToTransaction(p) {
   const id = p.id;
@@ -59,7 +66,7 @@ function Transactions() {
         setErrorText('');
         setLoading(true);
 
-        const { items } = await fetchPokemonsPage({
+        const { items } = await fetchPokemonPage({
           limit: API_LIMIT,
           offset: 0,
           signal: controller.signal,
@@ -115,6 +122,12 @@ function Transactions() {
     return result;
   }, [transactions, search, category, sort]);
 
+  const SHOW_PAGINATION = true;
+
+  const [forceShowPagination, setForceShowPagination] = useState(false);
+
+  const shouldPagination = SHOW_PAGINATION || totalPages > 1;
+
   // ✅ client pagination
   const totalPages = Math.max(
     1,
@@ -141,51 +154,52 @@ function Transactions() {
   return (
     <>
       <PageHeader title="Transactions" />
+      <div className={styles.page}>
+        <section className={styles.transactions}>
+          <section className={styles.transactionsControls}>
+            <SearchBox value={search} onChange={setSearch} />
 
-      <section className={styles.transactions}>
-        <section className={styles.transactionsControls}>
-          <SearchBox value={search} onChange={setSearch} />
+            <FilterControls
+              category={category}
+              onCategoryChange={setCategory}
+              sortBy={sort}
+              onSortChange={setSort}
+            />
+          </section>
 
-          <FilterControls
-            category={category}
-            onCategoryChange={setCategory}
-            sortBy={sort} // ✅ оставил как у тебя
-            onSortChange={setSort}
-          />
+          {isInitialLoading ? (
+            <div className={styles.transactionsLoad}>
+              <div className={styles.roller}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <div>Loading...</div>
+            </div>
+          ) : errorText ? (
+            <div className={styles.tableWrapper}>{errorText}</div>
+          ) : (
+            <>
+              <div className={styles.tableWrapper}>
+                <TransactionsTable data={paginatedTransactions} />
+              </div>
+              {/* Dynamic pagination totalPages > 1*/}
+              {shouldPagination && (
+                <Pagination
+                  currentPage={page}
+                  totalPages={totalPages}
+                  onPageChange={setPage}
+                />
+              )}
+            </>
+          )}
         </section>
-
-        {isInitialLoading ? (
-          <div className={styles.transactionsLoad}>
-            <div className={styles.roller}>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div>Loading...</div>
-          </div>
-        ) : errorText ? (
-          <div className={styles.tableWrapper}>{errorText}</div>
-        ) : (
-          <>
-            <div className={styles.tableWrapper}>
-              <TransactionsTable data={paginatedTransactions} />
-            </div>
-
-            {totalPages > 1 && (
-              <Pagination
-                currentPage={page}
-                totalPages={totalPages}
-                onPageChange={setPage}
-              />
-            )}
-          </>
-        )}
-      </section>
+      </div>
     </>
   );
 }
